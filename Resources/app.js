@@ -9,7 +9,7 @@ var tabGroup = Titanium.UI.createTabGroup();
 // create base UI tab and root window
 //
 var win1 = Titanium.UI.createWindow({  
-    title:'Tab 1',
+    title:'Menu',
     backgroundColor:'#fff'
 });
 var tab1 = Titanium.UI.createTab({  
@@ -20,8 +20,8 @@ var tab1 = Titanium.UI.createTab({
 
 var label1 = Titanium.UI.createLabel({
 	color:'#999',
-	text:'I am Window 1',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
+	text:'Dinner Bell',
+	font:{fontSize:50,fontFamily:'Helvetica Neue'},
 	textAlign:'center',
 	width:'auto'
 });
