@@ -1,4 +1,4 @@
-var win = Ti.UI.currentWindow;
+var contactwin = Ti.UI.currentWindow;
 var android = (Ti.Platform.osname === 'android');
 
 // getting all from Android is very slow...
