@@ -2,18 +2,33 @@ var win = Titanium.UI.currentWindow;
 win.backgroundImage = '/images/table_cloth.png';
 
 
+var close = Titanium.UI.createButton({
+	width : 25,
+	height: 25,
+	top : 35,
+	left: 40,
+	backgroundImage:'/images/x_close.png'
+})	
+
+close.addEventListener('click', function()
+{
+	win.close();
+});
+
+win.add(close);
+
 var minDate = new Date();
-minDate.setFullYear(2009);
+minDate.setFullYear(2010);
 minDate.setMonth(0);
 minDate.setDate(1);
 
 var maxDate = new Date();
-maxDate.setFullYear(2009);
+maxDate.setFullYear(2015);
 maxDate.setMonth(11);
 maxDate.setDate(31);
 
 var value = new Date();
-value.setFullYear(2009);
+value.setFullYear(2011);
 value.setMonth(0);
 value.setDate(1);
 
@@ -21,7 +36,7 @@ var imageView = Titanium.UI.createImageView({
 	image:'/images/schedule_meal_title.png',
 	width:200,
 	height:120,
-	top:20, 
+	top:25, 
 	});
 
 imageView.addEventListener('load', function()
@@ -35,7 +50,7 @@ var ta1 = Titanium.UI.createTextArea({
 	editable: true,
 	height:70,
 	width:200,
-	top:160,
+	top:175,
 	font:{fontSize:20,fontFamily:'Marker Felt', fontWeight:'bold'},
 	color:'#888',
 	textAlign:'left',
@@ -66,7 +81,7 @@ picker.selectionIndicator = true;
 
 var label = Ti.UI.createLabel({
 	text:'Set a custom message',
-	top:125,
+	top:140,
 	width:'auto',
 	height:'auto',
 	textAlign:'center',
@@ -74,9 +89,10 @@ var label = Ti.UI.createLabel({
 });
 win.add(label);
 
+
 var label2 = Ti.UI.createLabel({
 	text:'Date',
-	top:255,
+	top:252,
 	width:'auto',
 	height:'auto',
 	textAlign:'center',
@@ -88,14 +104,15 @@ var b3 = Titanium.UI.createButton({
 	title:'TODAY',
 	width:200,
 	height:40,
-	top:260
+	top:280,
+	color:'#6DABF8'
 });
 
 var b4 = Titanium.UI.createButton({
 	title:'Send',
 	width:200,
 	height:40,
-	top:330
+	top:345
 });
 
 b4.addEventListener('click', function()
