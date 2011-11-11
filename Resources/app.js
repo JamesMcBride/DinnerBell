@@ -44,7 +44,7 @@ var tab2 = Titanium.UI.createTab({
 
 var label2 = Titanium.UI.createLabel({
 	color:'#999',
-	text:'I am Window 2',
+	text:'unavailable',
 	font:{fontSize:20,fontFamily:'Helvetica Neue'},
 	textAlign:'center',
 	width:'auto'
@@ -54,11 +54,11 @@ win2.add(label2);
 
 //////
 var bvbottom = Titanium.UI.createButton({
-	title : 'V-Bottom',
-	width : 50,
+	title : 'Schedule Meals',
+	width : 200,
 	height: 40,
 	top : 150,
-	left : 180
+	left : 60
 });
 bvbottom.addEventListener('click', function() {
 	b1.verticalAlign = Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM;
