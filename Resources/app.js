@@ -1,3 +1,7 @@
+//include seperate files
+Ti.include("buttons.js");
+
+
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Titanium.UI.setBackgroundColor('#000');
 
@@ -112,7 +116,8 @@ contacts.addEventListener('click', function()
 	
 win1.add(schedulemeals);
 win1.add(ringbell);
-win1.add(contacts)
+win1.add(contacts);
+win1.add(meals);
 
 //open to Contacts screen
 
