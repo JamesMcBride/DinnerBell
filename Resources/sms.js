@@ -3,12 +3,18 @@ var win3 = Ti.UI.createWindow;
 function ringBell(){
 // TODO: grab all active contacts, and send them a text message
 
+guests = getGuests();
+
+for (guest in guests){
+	
+
 var module = require("com.omorandi");
 smsDialog = module.createSMSDialog({
-    recipients: ['+14353137429'],
-    messageBody: 'Test message from AW',
-    barColor: 'red'});
+    recipients: [guest[0]],
+    messageBody: 'Dinner Is Ready',
+    });
 
     smsDialog.open({animated: true});
     
+}
 }
