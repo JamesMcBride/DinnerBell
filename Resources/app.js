@@ -51,6 +51,19 @@ win1.add(imageView);
 
 // end Copy to make new image
 
+var titleImageView = Titanium.UI.createImageView({
+	image:'/images/dinner_bell_title.png',
+	width:212,
+	height:52,
+	top:172
+	});
+
+titleImageView.addEventListener('load', function()
+{
+	Ti.API.info('LOAD CALLED');
+});
+win1.add(titleImageView);
+
 //
 // create controls tab and root window
 //
