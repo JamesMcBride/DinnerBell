@@ -3,7 +3,8 @@ function guestList(){
 var android = (Ti.Platform.osname === 'android');
 
 var w = Titanium.UI.createWindow({
-		backgroundColor:'#336699' // TODO: put table cloth background
+		backgroundColor:'#336699',
+		backgroundImage: "/images/table_cloth.png" // TODO: put table cloth background
 	});
 	// TODO: list contacts that will receive text
 	
@@ -17,65 +18,101 @@ var w = Titanium.UI.createWindow({
 	
 	var values = {cancel:function() { info.text = 'Cancelled'; }};
 	values.selectedPerson = function(e) { 
-		//Titanium.API.debug(e.person.fullName + ' ' + e.person.phone.mobile); 
+		Titanium.API.debug(e.person.fullName + ' ' + e.person.phone.mobile); 
 		insertGuest(e.person.fullName, e.person.phone.mobile);		
 		
 		};
 	var show = Ti.UI.createButton({
 		title:'Add Guest',
-		bottom:20,
-		width:200,
-		height:40
+		bottom:55,
+		width:140,
+		height:40,
+		left: 50
 	});
 	show.addEventListener('click', function() {
 		Titanium.Contacts.showContacts(values);
 		//Titanium.API.debug("Values: " + values.selectedPerson);
 	});
 	w.add(show);
-	
-	var b = Titanium.UI.createButton({
-		title:'Close',
-		height:30,
-		width:150
+	var show2 = Ti.UI.createButton({
+		title:'Delete',
+		bottom:55,
+		width:75,
+		height:40,
+		right: 50,
+		color: 'red'
 	});
-	w.add(b);
-	b.addEventListener('click', function()
+	
+	show2.addEventListener('click', function() {
+		// TODO delte contcts
+		Titanium.API.info("huzzah, a row was swiped");
+		
+		//Titanium.API.debug("Values: " + values.selectedPerson);
+	});
+	w.add(show2);
+	
+	var close = Titanium.UI.createButton({
+		width : 25,
+		height: 25,
+		top : 35,
+		left: 40,
+		backgroundImage:'/images/x_close.png'
+	})	
+	
+	close.addEventListener('click', function()
 	{
 		w.close();
 	});
 
+	w.add(close);
 	w.open();
 
 
 initialize_database();
 
-getGuests(w);
+guests = getGuests();
 
 
 // create table view data object
 var data = [];
-var count = 0;
 
-while (rows.isValidRow())
+for (var i=0; i < guests.length; i=i+1)
 	{
+		Titanium.API.debug(guests[i]);
 		//Titanium.API.info('ID: ' + rows.field(0) + ' NAME: ' + rows.fieldByName('name') + ' COLUMN NAME ' + rows.fieldName(0));
-		data[count] = Ti.UI.createTableViewRow({title:rows.fieldByName('name') + " " +rows.fieldByName('mobile'),backgroundColor:'#ffffff'});
-		count=count+1;
-
-		rows.next();
+		if (guests[i][1] == null){
+			continue;
+		}
+		data[i] = Ti.UI.createTableViewRow({title:guests[i][0],backgroundColor:'#ffffff'});
 	}
-	rows.close();
+
+
+var imageView = Titanium.UI.createImageView({
+	image:'/images/contacts_title.png',
+	width:200,
+	height:120,
+	top:25, 
+	});
+
+imageView.addEventListener('load', function()
+{
+	Ti.API.info('LOAD CALLED');
+});
+w.add(imageView);
+
+
 
 // create table view
 var tableview = Titanium.UI.createTableView({
 	data:data,
-	bottom:30,
+	top:126,
 	left:20,
 	right:20,
-	height:178,
-	borderWidth:2,
+	height:230,
+	width:220,
+	borderWidth:3,
 	borderRadius:10,
-	borderColor:'#000000'
+	borderColor:'#214792'
 });
 
 // create table view event listener
@@ -87,14 +124,14 @@ tableview.addEventListener('click', function(e)
 	var row = e.row;
 	var rowdata = e.rowData;
 	row.hasCheck = true;
-	var color = '#' + String(Math.round(Math.random()*9)) + String(Math.round(Math.random()*9)) + String(Math.round(Math.random()*9));
-	row.title = "Color is now: "+color;
-	row.backgroundColor = color;
+
 	//Titanium.UI.createAlertDialog({title:'Table View',message:'row ' + row + ' index ' + index + ' section ' + section  + ' row data ' + rowdata}).show();
 });
 
+
 // add table view to the window
-win.add(tableview);
+
+w.add(tableview);
 
 
 

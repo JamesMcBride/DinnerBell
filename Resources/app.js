@@ -280,7 +280,7 @@ function loadingScreen(){
 
 
 	
-	},5000);
+	},100);
 }
 
 // end loading screen
