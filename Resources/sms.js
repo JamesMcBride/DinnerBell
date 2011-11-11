@@ -10,7 +10,7 @@ for (guest in guests){
 
 var module = require("com.omorandi");
 smsDialog = module.createSMSDialog({
-    recipients: [guest[0]],
+    recipients: [guest[1]],
     messageBody: 'Dinner Is Ready',
     });
 
