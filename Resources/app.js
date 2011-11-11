@@ -21,9 +21,10 @@ var tab1 = Titanium.UI.createTab({
 var label1 = Titanium.UI.createLabel({
 	color:'#999',
 	text:'Dinner Bell',
-	font:{fontSize:50,fontFamily:'Helvetica Neue'},
+	font:{fontSize:20,fontFamily:'Helvetica Neue'},
 	textAlign:'center',
-	width:'auto'
+	width:'auto',
+	bottom: '300'
 });
 
 win1.add(label1);
@@ -50,6 +51,20 @@ var label2 = Titanium.UI.createLabel({
 });
 
 win2.add(label2);
+
+//////
+var bvbottom = Titanium.UI.createButton({
+	title : 'V-Bottom',
+	width : 50,
+	height: 40,
+	top : 150,
+	left : 180
+});
+bvbottom.addEventListener('click', function() {
+	b1.verticalAlign = Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM;
+});
+
+win1.add(bvbottom);
 
 
 
