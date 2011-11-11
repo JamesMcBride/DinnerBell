@@ -85,7 +85,9 @@ var makeTable = function() {
 
 			}
 			
+
 			
+            var selected = true;
 		});
 	}
 	return rows;
