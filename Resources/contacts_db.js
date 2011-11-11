@@ -49,9 +49,45 @@ var makeTable = function() {
 			person:people[i],
 			hasChild:false
 		});
+<<<<<<< HEAD
+		rows[i].addEventListener('click', function(e) {	
+			var display = Ti.UI.createWindow({
+				backroundColor:'white',
+				title:e.row.person.fullName,
+				
+			});
+            var selected = true;
+			var top = 0;
+			var showedSomething = false;
+			for (var label in e.row.person.address) {
+				top += 20;
+				var addrs = e.row.person.address[label];
+
+				for (var i = 0; i < addrs.length; i++) {
+					var info = Ti.UI.createLabel({
+						text:'('+label+') '+addrs[i].Street,
+						top:top,
+						left:20,
+						height:'auto',
+						width:'auto'
+					});
+					display.add(info);
+					showedSomething = true;
+				}
+			}
+			if (!showedSomething){
+				display.add(Ti.UI.createLabel({text: 'No addresses to show'}));
+
+				
+
+			}
+			
+
+=======
 		
 		
 		rows[i].addEventListener('click', function(e) {
+>>>>>>> e6a636c2cb125a9fc0265bebe4ee439ed3db04ff
 			
             var selected = true;
 		});
