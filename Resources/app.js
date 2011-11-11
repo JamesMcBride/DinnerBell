@@ -10,7 +10,7 @@ var tabGroup = Titanium.UI.createTabGroup();
 //
 var win1 = Titanium.UI.createWindow({  
     title:'Menu',
-    backgroundColor:'#EE8833'
+    backgroundColor:'#FFA54F'
 });
 var tab1 = Titanium.UI.createTab({  
     icon:'KS_nav_views.png',
@@ -55,7 +55,7 @@ var label2 = Titanium.UI.createLabel({
 
 win2.add(label2);
 
-//////
+//////Menu Buttons
 var schedulemeals = Titanium.UI.createButton({
 	title : 'Schedule Meals',
 	width : 200,
@@ -82,6 +82,9 @@ var contacts = Titanium.UI.createButton({
 win1.add(schedulemeals);
 win1.add(ringbell);
 win1.add(contacts)
+
+//open to Contacts screen
+
 
 
 //
