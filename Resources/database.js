@@ -4,6 +4,19 @@ function initialize_database(){
 	db.close();
 }
 
+function initialize_mealbase(){
+	var db = Titanium.Database.open('dinnerbell');
+	db.execute('CREATE TABLE IF NOT EXISTS meal (id int auto_increment, title varchar(255), date varchar(255))'); // TODO: Add facebook, twitter, email information to database
+	db.close();
+}
+
+function insertMeal(title, date){
+	var db = Titanium.Database.open('dinnerbell');
+	db.execute('INSERT INTO meal (title, date) VALUES(?,?)',title, date);
+	// TODO: may need to deal with possible exception if error writing to database
+}
+
+
 function insertGuest(name, mobile){
 	var db = Titanium.Database.open('dinnerbell');
 	db.execute('INSERT INTO guests (name, mobile) VALUES(?,?)',name, mobile);
