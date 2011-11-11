@@ -116,6 +116,8 @@ win1.add(contacts)
 
 //open to Contacts screen
 
+
+
 // Loading Screen Start
 
 var actInd = Titanium.UI.createActivityIndicator({
