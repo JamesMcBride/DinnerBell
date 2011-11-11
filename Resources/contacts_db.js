@@ -1,33 +1,6 @@
 var win = Ti.UI.currentWindow;
 var android = (Ti.Platform.osname === 'android');
 
-	var label = Titanium.UI.createButton({
-		title:'Custom Toolbar',
-		color:'#fff',
-		style:Titanium.UI.iPhone.SystemButtonStyle.PLAIN
-	});
-
-	var flexSpace = Titanium.UI.createButton({
-		systemButton:Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
-	});
-	var close = Titanium.UI.createButton({
-		title:'Close',
-		style:Titanium.UI.iPhone.SystemButtonStyle.DONE
-	});
-	var hello = Titanium.UI.createButton({
-		title:'Hello',
-		style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED
-	});
-
-	// create and add toolbar
-	var toolbar = Titanium.UI.createToolbar({
-		items:[hello,flexSpace,label, flexSpace,close],
-		top:0,
-		borderTop:false,
-		borderBottom:true
-	});
-	win.add(toolbar);
-
 // getting all from Android is very slow...
 var activityIndicator;
 if (android) {
@@ -37,7 +10,30 @@ if (android) {
 	activityIndicator.show();
 }
 
-
+var paidSwitch = Titanium.UI.createSwitch({
+  top:240,
+  left:50,
+  value:false,
+  visible:false
+});
+win.add(paidSwitch);
+var paidCheckbox = Titanium.UI.createImageView({
+  image:'images/unchecked.png',
+  width:30,
+  height:30,
+  top:240,
+  left:50
+});
+paidCheckbox.addEventListener('click',function(e) {
+  if(paidSwitch.value==false) {
+    paidSwitch.value = true;
+    paidCheckbox.image = 'images/checked.png';
+  } else {
+    paidSwitch = false;
+    paidCheckbox.image = 'images/unchecked.png';
+  }
+});
+win.add(paidCheckbox);
 
 var makeTable = function() {
 	var people = Titanium.Contacts.getAllPeople();
@@ -53,7 +49,8 @@ var makeTable = function() {
 			person:people[i],
 			hasChild:false
 		});
-		rows[i].addEventListener('click', function(e) {
+<<<<<<< HEAD
+		rows[i].addEventListener('click', function(e) {	
 			var display = Ti.UI.createWindow({
 				backroundColor:'white',
 				title:e.row.person.fullName,
@@ -86,6 +83,11 @@ var makeTable = function() {
 			}
 			
 
+=======
+		
+		
+		rows[i].addEventListener('click', function(e) {
+>>>>>>> e6a636c2cb125a9fc0265bebe4ee439ed3db04ff
 			
             var selected = true;
 		});

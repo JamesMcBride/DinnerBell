@@ -1,5 +1,5 @@
 //include seperate files
-Ti.include("buttons.js");
+Ti.include("sms.js");
 
 
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
@@ -15,6 +15,10 @@ var tabGroup = Titanium.UI.createTabGroup();
 var contactwin = Titanium.UI.createWindow({  
 	url:'contacts_db.js',
 	titleid:'controls_win_title'
+});
+var datewin = Titanium.UI.createWindow({  
+	url:'date.js',
+	titleid:'date_win_title'
 });
 //
 // create base UI tab and root window
@@ -42,7 +46,7 @@ var imageView = Titanium.UI.createImageView({
 	image:'/images/bell.png',
 	width:143,
 	height:128,
-	top:40
+	top:40, 
 	});
 
 
@@ -93,42 +97,79 @@ win2.add(label2);
 
 //////Menu Buttons
 var schedulemeals = Titanium.UI.createButton({
-	title : 'Schedule Meals',
-	width : 200,
-	height: 40,
-	top : 250,
-	
-	
+	top:225,
+	width:185,
+	height:129,
+	backgroundImage:'/images/schedule_meal_plate.png'	
 	
 })
 
 var ringbell = Titanium.UI.createButton({
-	title : 'Ring the Bell',
-	width : 200,
-	height: 40,
-	top : 310,
-	
-	
+	width:143,
+	height:128,
+	top:40, 
+	backgroundImage:'/images/bell.png',	
 })	
 
+ ringbell.addEventListener('click', function()
+ {
+
+	var w = Titanium.UI.createWindow({
+		backgroundColor:'#336699'
+	});
+	// TODO: list contacts that will receive text
+	
+	// create a button to close window
+	var ring = Titanium.UI.createButton({
+		title:'Ring Bell',
+		height:30,
+		width:150,
+		top:20
+	});
+	w.add(ring);
+	ring.addEventListener('click', function()
+	{
+		ringBell();
+	});
+	
+	var b = Titanium.UI.createButton({
+		title:'Close',
+		height:30,
+		width:150
+	});
+	w.add(b);
+	b.addEventListener('click', function()
+	{
+		w.close();
+	});
+
+	w.open();
+});
+
 var contacts = Titanium.UI.createButton({
-	title : 'Contacts',
-	width : 200,
-	height: 40,
-	top : 370,
+	width : 220,
+	height: 60,
+	top : 353,
+	backgroundImage:'/images/contacts_phone.png'
 })	
 
 contacts.addEventListener('click', function()
 {
 	contactwin.open();
 })
+
+schedulemeals.addEventListener('click', function()
+{
+	datewin.open();
+})
 	
 win1.add(schedulemeals);
 win1.add(ringbell);
 win1.add(contacts);
-win1.add(meals);
 
 //open to Contacts screen
+
+
 
 // Loading Screen Start
 
