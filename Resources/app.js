@@ -1,6 +1,7 @@
 //include seperate files
 Ti.include("sms.js");
-
+Ti.include("contacts_db.js");
+Ti.include("database.js");
 
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Titanium.UI.setBackgroundColor('#000');
@@ -12,10 +13,6 @@ Titanium.UI.iPhone.statusBarStyle = Titanium.UI.iPhone.StatusBar.TRANSLUCENT_RED
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
 
-var contactwin = Titanium.UI.createWindow({  
-	url:'contacts_db.js',
-	titleid:'controls_win_title'
-});
 var datewin = Titanium.UI.createWindow({  
 	url:'date.js',
 	titleid:'date_win_title'
@@ -155,7 +152,8 @@ var contacts = Titanium.UI.createButton({
 
 contacts.addEventListener('click', function()
 {
-	contactwin.open();
+	//contactwin.open();
+	guestList();
 })
 
 schedulemeals.addEventListener('click', function()

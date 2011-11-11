@@ -1,4 +1,4 @@
-Ti.include("database.js");
+function guestList(){
 
 var android = (Ti.Platform.osname === 'android');
 
@@ -8,17 +8,30 @@ var w = Titanium.UI.createWindow({
 	// TODO: list contacts that will receive text
 	
 	// create a button to close window
-	var addContact = Titanium.UI.createButton({
-		title:'Add Contact',
-		height:30,
-		width:150,
-		top:20
+	var info = Ti.UI.createLabel({
+		text:'',
+		bottom:70,
+		height:'auto',
+		width:'auto'
 	});
-	w.add(addContact);
-	addContact.addEventListener('click', function()
-	{
-		// TODO: contact picker to add contacts
+	
+	var values = {cancel:function() { info.text = 'Cancelled'; }};
+	values.selectedPerson = function(e) { 
+		//Titanium.API.debug(e.person.fullName + ' ' + e.person.phone.mobile); 
+		insertGuest(e.person.fullName, e.person.moble);		
+		
+		};
+	var show = Ti.UI.createButton({
+		title:'Add Guest',
+		bottom:20,
+		width:200,
+		height:40
 	});
+	show.addEventListener('click', function() {
+		Titanium.Contacts.showContacts(values);
+		//Titanium.API.debug("Values: " + values.selectedPerson);
+	});
+	w.add(show);
 	
 	var b = Titanium.UI.createButton({
 		title:'Close',
@@ -36,6 +49,8 @@ var w = Titanium.UI.createWindow({
 
 initialize_database();
 getGuests(w);
+
+}
 // getting all from Android is very slow...
 /*var activityIndicator;
 if (android) {

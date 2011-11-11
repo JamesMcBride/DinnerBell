@@ -1,10 +1,14 @@
 function initialize_database(){
 	var db = Titanium.Database.open('dinnerbell');
 	db.execute('CREATE TABLE IF NOT EXISTS guests (id int auto_increment, name varchar(255), mobile varchar(255))'); // TODO: Add facebook, twitter, email information to database
-	db.execute('INSERT INTO guests (name, mobile ) VALUES(?,?)','Jamie Mcride', '435-229-2564');
 	db.close();
 }
 
+function insertGuest(name, mobile){
+	var db = Titanium.Database.open('dinnerbell');
+	db.execute('INSERT INTO guests (name, mobile) VALUES(?,?)',name, mobile);
+	// TODO: may need to deal with possible exception if error writing to database
+}
 
 function getGuests(win){
 	var db = Titanium.Database.open('dinnerbell');
