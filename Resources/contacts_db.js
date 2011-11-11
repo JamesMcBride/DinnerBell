@@ -53,7 +53,7 @@ var makeTable = function() {
 			person:people[i],
 			hasChild:false
 		});
-		rows[i].addEventListener('click', function(e) {
+		rows[i].addEventListener('click', function(e) {	
 			var display = Ti.UI.createWindow({
 				backroundColor:'white',
 				title:e.row.person.fullName,

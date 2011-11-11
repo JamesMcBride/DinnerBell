@@ -12,6 +12,10 @@ var contactwin = Titanium.UI.createWindow({
 	url:'contacts_db.js',
 	titleid:'controls_win_title'
 });
+var datewin = Titanium.UI.createWindow({  
+	url:'date.js',
+	titleid:'date_win_title'
+});
 //
 // create base UI tab and root window
 //
@@ -117,6 +121,11 @@ var contacts = Titanium.UI.createButton({
 contacts.addEventListener('click', function()
 {
 	contactwin.open();
+})
+
+schedulemeals.addEventListener('click', function()
+{
+	datewin.open();
 })
 	
 win1.add(schedulemeals);
