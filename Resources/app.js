@@ -56,19 +56,32 @@ var label2 = Titanium.UI.createLabel({
 win2.add(label2);
 
 //////
-var bvbottom = Titanium.UI.createButton({
+var schedulemeals = Titanium.UI.createButton({
 	title : 'Schedule Meals',
 	width : 200,
 	height: 40,
 	top : 130,
+})
+
+var ringbell = Titanium.UI.createButton({
+	title : 'Ring the Bell',
+	width : 200,
+	height: 40,
+	top : 190,
 	left : 60
-});
-bvbottom.addEventListener('click', function() {
-	b1.verticalAlign = Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM;
-});
+})	
 
-win1.add(bvbottom);
-
+var contacts = Titanium.UI.createButton({
+	title : 'Contacts',
+	width : 200,
+	height: 40,
+	top : 250,
+	left : 60
+})	
+	
+win1.add(schedulemeals);
+win1.add(ringbell);
+win1.add(contacts)
 
 
 //
