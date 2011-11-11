@@ -10,6 +10,31 @@ if (android) {
 	activityIndicator.show();
 }
 
+var paidSwitch = Titanium.UI.createSwitch({
+  top:240,
+  left:50,
+  value:false,
+  visible:false
+});
+win.add(paidSwitch);
+var paidCheckbox = Titanium.UI.createImageView({
+  image:'images/unchecked.png',
+  width:30,
+  height:30,
+  top:240,
+  left:50
+});
+paidCheckbox.addEventListener('click',function(e) {
+  if(paidSwitch.value==false) {
+    paidSwitch.value = true;
+    paidCheckbox.image = 'images/checked.png';
+  } else {
+    paidSwitch = false;
+    paidCheckbox.image = 'images/unchecked.png';
+  }
+});
+win.add(paidCheckbox);
+
 var makeTable = function() {
 	var people = Titanium.Contacts.getAllPeople();
 	var rows = [];
@@ -24,6 +49,8 @@ var makeTable = function() {
 			person:people[i],
 			hasChild:false
 		});
+		
+		
 		rows[i].addEventListener('click', function(e) {
 			
             var selected = true;
