@@ -22,7 +22,7 @@ function getGuests(){
 	while (rows.isValidRow())
 	{
 		//Titanium.API.info('ID: ' + rows.field(0) + ' NAME: ' + rows.fieldByName('name') + ' COLUMN NAME ' + rows.fieldName(0));
-		guest[count] = [rows.fieldByName('name'),rows.fieldByName('mobile')];
+		guests[count] = [rows.fieldByName('name'),rows.fieldByName('mobile')];
 		count=count+1;
 
 		rows.next();
