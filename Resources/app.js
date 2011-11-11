@@ -18,17 +18,19 @@ var tab1 = Titanium.UI.createTab({
     window:win1
 });
 
-var label1 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'Dinner Bell',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto',
-	bottom: '300'
+var imageView = Titanium.UI.createImageView({
+	image:'http://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png',
+	width:261,
+	height:178,
+	top:20
 });
 
+imageView.addEventListener('load', function()
+{
+	Ti.API.info('LOAD CALLED');
+});
+win1.add(imageView);
 
-win1.add(label1);
 
 //
 // create controls tab and root window
