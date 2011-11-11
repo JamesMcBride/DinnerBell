@@ -25,7 +25,7 @@ function insertGuest(name, mobile){
 	db.close();
 }
 
-function getGuests(win){
+function getGuests(){
 	var db = Titanium.Database.open('dinnerbell');
 	var rows = db.execute('SELECT * FROM guests');
 	//Titanium.API.info('ROW COUNT = ' + rows.getRowCount());
