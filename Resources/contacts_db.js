@@ -25,21 +25,8 @@ var makeTable = function() {
 			hasChild:false
 		});
 		rows[i].addEventListener('click', function(e) {
-			var display = Ti.UI.createWindow({
-				backroundColor:'white',
-				title:e.row.person.fullName,
-				
-			});
+			
             var selected = true;
-			var top = 0;
-			var showedSomething = false;
-			for (var label in e.row.person.address) {
-				top += 20;
-				var addrs = e.row.person.address[label];
-				
-			}
-			
-			
 		});
 	}
 	return rows;
