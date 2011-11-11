@@ -17,7 +17,6 @@ var win = Titanium.UI.createWindow({
 });
 
 var win1 = Titanium.UI.createWindow({  
-    title:'Menu',
     backgroundColor:'#FFFFFF',
     backgroundImage:'/images/table_cloth.png'
     
@@ -31,10 +30,10 @@ var tab1 = Titanium.UI.createTab({
 
 var imageView = Titanium.UI.createImageView({
 	image:'/images/bell.png',
-	width:200,
-	height:100,
-	top:30
-});
+	width:143,
+	height:128,
+	top:40
+	});
 
 imageView.addEventListener('load', function()
 {
@@ -71,7 +70,7 @@ var schedulemeals = Titanium.UI.createButton({
 	title : 'Schedule Meals',
 	width : 200,
 	height: 40,
-	top : 130,
+	top : 250,
 	
 	
 	
@@ -81,7 +80,7 @@ var ringbell = Titanium.UI.createButton({
 	title : 'Ring the Bell',
 	width : 200,
 	height: 40,
-	top : 190,
+	top : 310,
 	
 	
 })	
@@ -90,7 +89,7 @@ var contacts = Titanium.UI.createButton({
 	title : 'Contacts',
 	width : 200,
 	height: 40,
-	top : 250,
+	top : 370,
 })	
 
 contacts.addEventListener('click', function()
@@ -137,10 +136,7 @@ function loadingScreen(){
 		//
 		//  add tabs
 		//
-		tabGroup.addTab(tab1);  
-		tabGroup.addTab(tab2); 
-		// open tab group
-		tabGroup.open();
+		win1.open();
 
 
 
