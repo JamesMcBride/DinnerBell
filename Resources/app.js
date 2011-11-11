@@ -98,8 +98,7 @@ var schedulemeals = Titanium.UI.createButton({
 	width : 200,
 	height: 40,
 	top : 250,
-	
-	
+	backgroundImage:'/images/bell.png',	
 	
 })
 
