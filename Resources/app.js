@@ -70,6 +70,9 @@ var schedulemeals = Titanium.UI.createButton({
 	width : 200,
 	height: 40,
 	top : 130,
+	
+	
+	
 })
 
 var ringbell = Titanium.UI.createButton({
@@ -77,7 +80,8 @@ var ringbell = Titanium.UI.createButton({
 	width : 200,
 	height: 40,
 	top : 190,
-	left : 60
+	
+	
 })	
 
 var contacts = Titanium.UI.createButton({
@@ -85,7 +89,6 @@ var contacts = Titanium.UI.createButton({
 	width : 200,
 	height: 40,
 	top : 250,
-	left : 60
 })	
 
 contacts.addEventListener('click', function()
