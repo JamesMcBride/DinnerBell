@@ -8,10 +8,16 @@ var tabGroup = Titanium.UI.createTabGroup();
 //
 // create base UI tab and root window
 //
+var win = Titanium.UI.createWindow({  
+    fullscreen: true,
+    visible: true
+});
+
 var win1 = Titanium.UI.createWindow({  
     title:'Menu',
     backgroundColor:'#EE8833'
 });
+
 var tab1 = Titanium.UI.createTab({  
     icon:'KS_nav_views.png',
     title:'Tab 1',
@@ -69,14 +75,52 @@ bvbottom.addEventListener('click', function() {
 
 win1.add(bvbottom);
 
+// Loading Screen Start
+
+var actInd = Titanium.UI.createActivityIndicator({
+	bottom:10, 
+	height:50,
+	width:10,
+	topMost: true,
+	style:Titanium.UI.iPhone.ActivityIndicatorStyle.PLAIN
+});
+
+function loadingScreen(){
+	actInd.style = Titanium.UI.iPhone.ActivityIndicatorStyle.PLAIN;
+	actInd.font = {fontFamily:'Helvetica Neue', fontSize:15,fontWeight:'bold'};
+	actInd.color = 'white';
+	actInd.message = 'Loading...';
+	actInd.width = 210;
+	actInd.show();
+	var imageView = Titanium.UI.createImageView({
+		image:'/iphone/default.png',
+		width:'100%',
+		height:'100%'
+	});
+	win.add(imageView);
+	win.add(actInd);
+
+	setTimeout(function()
+	{
+		actInd.hide();
+		//
+		// Create Windows
+		//
+		//  add tabs
+		//
+		tabGroup.addTab(tab1);  
+		tabGroup.addTab(tab2); 
+		// open tab group
+		tabGroup.open();
 
 
-//
-//  add tabs
-//
-tabGroup.addTab(tab1);  
-tabGroup.addTab(tab2);  
 
+	
+	},5000);
+}
 
-// open tab group
-tabGroup.open();
+// end loading screen
+
+//Load Screen
+loadingScreen();
+win.open();
