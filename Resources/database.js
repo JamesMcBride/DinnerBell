@@ -19,8 +19,9 @@ function insertMeal(title, date){
 
 
 function insertGuest(name, mobile){
+	//Titanium.API.debug(mobile[0]);
 	var db = Titanium.Database.open('dinnerbell');
-	db.execute('INSERT INTO guests (name, mobile) VALUES(?,?)',name, mobile);
+	db.execute('INSERT INTO guests (name, mobile) VALUES(?,?)',name, mobile[0]);
 	// TODO: may need to deal with possible exception if error writing to database
 	db.close();
 }
@@ -34,7 +35,7 @@ function getGuests(){
 	while (rows.isValidRow())
 	{
 		//Titanium.API.info('ID: ' + rows.field(0) + ' NAME: ' + rows.fieldByName('name') + ' COLUMN NAME ' + rows.fieldName(0));
-		guest[count] = [rows.fieldByName('name'),rows.fieldByName('mobile')];
+		guests[count] = [rows.fieldByName('name'),rows.fieldByName('mobile')];
 		count=count+1;
 
 		rows.next();
