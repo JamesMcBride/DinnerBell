@@ -17,6 +17,20 @@ value.setFullYear(2009);
 value.setMonth(0);
 value.setDate(1);
 
+var imageView = Titanium.UI.createImageView({
+	image:'/images/schedule_meal_title.png',
+	width:200,
+	height:120,
+	top:20, 
+	});
+
+imageView.addEventListener('load', function()
+{
+	Ti.API.info('LOAD CALLED');
+});
+win.add(imageView);
+
+
 var ta1 = Titanium.UI.createTextArea({
 	editable: true,
 	height:70,
@@ -26,12 +40,12 @@ var ta1 = Titanium.UI.createTextArea({
 	color:'#888',
 	textAlign:'left',
 	appearance:Titanium.UI.KEYBOARD_APPEARANCE_ALERT,	
-	keyboardType:Titanium.UI.KEYBOARD_NUMBERS_PUNCTUATION,
-	returnKeyType:Titanium.UI.RETURNKEY_GO,
+	keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+	returnKeyType:Titanium.UI.RETURNKEY_DONE,
 	borderWidth:2,
 	borderColor:'#bbb',
 	borderRadius:5,
-	suppressReturn:false
+	suppressReturn:true
 	
 });
 win.add(ta1);
@@ -137,13 +151,28 @@ b3.addEventListener('click', function()
 */
 
 	var label = Ti.UI.createLabel({
-		text:'Make a move',
-		top:120,
+		text:'Please Select',
+		top:150,
 		width:150,
 		height:'auto',
 		textAlign:'center',
 		color:'black'
 	});
+	
+	var imageView = Titanium.UI.createImageView({
+	image:'/images/set_a_date_title.png',
+	width:200,
+	height:160,
+	top:20, 
+	});
+
+	imageView.addEventListener('load', function()
+	{
+		Ti.API.info('LOAD CALLED');
+	});
+	w.add(imageView);
+	
+	
 	w.add(label);
 
 	var b = Titanium.UI.createButton({
