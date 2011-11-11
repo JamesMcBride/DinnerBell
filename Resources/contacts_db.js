@@ -1,15 +1,65 @@
 var win = Ti.UI.currentWindow;
+var android = (Ti.Platform.osname === 'android');
 
-var values = {cancel:function() {win.close();}};
-
-if (Ti.Platform.osname === 'android') {
-	// android doesn't have the selectedProperty support, so go ahead and force selectedPerson
-	values.selectedPerson = function(e) {info.text = e.person.fullName;};
+// getting all from Android is very slow...
+var activityIndicator;
+if (android) {
+	activityIndicator = Ti.UI.createActivityIndicator({
+		message: 'Loading all contacts, please wait...'
+	});
+	activityIndicator.show();
 }
 
+var makeTable = function() {
+	var people = Titanium.Contacts.getAllPeople();
+	var rows = [];
+	for (var i = 0; i < people.length; i++) {
+		Ti.API.info("People object is: "+people[i]);
+		var title = people[i].fullName;
+		if (!title || title.length === 0) {
+			title = "(no name)";
+		}
+		rows[i] = Ti.UI.createTableViewRow({
+			title: title,
+			person:people[i],
+			hasChild:true
+		});
+		rows[i].addEventListener('click', function(e) {
+			var display = Ti.UI.createWindow({
+				backroundColor:'white',
+				title:e.row.person.fullName
+			});
 
-function show() {
-	Titanium.Contacts.showContacts(values);
+			var top = 0;
+			var showedSomething = false;
+			for (var label in e.row.person.address) {
+				top += 20;
+				var addrs = e.row.person.address[label];
+				for (var i = 0; i < addrs.length; i++) {
+					var info = Ti.UI.createLabel({
+						text:'('+label+') '+addrs[i].Street,
+						top:top,
+						left:20,
+						height:'auto',
+						width:'auto'
+					});
+					display.add(info);
+					showedSomething = true;
+				}
+			}
+			if (!showedSomething){
+				display.add(Ti.UI.createLabel({text: 'No addresses to show'}));
+			}
+
+			Titanium.UI.currentTab.open(display,{animated:true});
+		});
+	}
+	return rows;
 };
 
-show();
+var tableview = Ti.UI.createTableView({
+	data:makeTable()
+});
+
+win.add(tableview);
+if (android && activityIndicator) {activityIndicator.hide();}
