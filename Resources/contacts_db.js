@@ -37,23 +37,6 @@ if (android) {
 	activityIndicator.show();
 }
 
-var b9 = Titanium.UI.createButton({
-	title:'Back Button Title',
-	height:40,
-	width:145,
-	top:210,
-	left:10
-});
-
-var backtitle=false;
-b9.addEventListener('click', function()
-{
-	win.backButtonTitleImage = null;	
-		win.backButtonTitle = 'Base UI';
-		backtitle = false;
-	});
-	
-win.add(b9);
 
 
 var makeTable = function() {
