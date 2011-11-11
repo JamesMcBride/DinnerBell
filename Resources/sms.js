@@ -18,3 +18,21 @@ smsDialog = module.createSMSDialog({
     
 }
 }
+function sendMeal(title, date){
+// TODO: grab all active contacts, and send them a text message
+
+guests = getGuests();
+
+for (guest in guests){
+	
+
+var module = require("com.omorandi");
+smsDialog = module.createSMSDialog({
+    recipients: [guest[1]],
+    messageBody: title + 'On' + date,
+    });
+
+    smsDialog.open({animated: true});
+    
+}
+}
