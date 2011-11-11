@@ -18,7 +18,9 @@ var win = Titanium.UI.createWindow({
 
 var win1 = Titanium.UI.createWindow({  
     title:'Menu',
-    backgroundColor:'#FFA54F'
+    backgroundColor:'#FFFFFF',
+    backgroundImage:'/images/table_cloth.png'
+    
 });
 
 var tab1 = Titanium.UI.createTab({  
@@ -28,10 +30,10 @@ var tab1 = Titanium.UI.createTab({
 });
 
 var imageView = Titanium.UI.createImageView({
-	image:'http://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png',
+	image:'/images/bell.png',
 	width:200,
 	height:100,
-	top:20
+	top:30
 });
 
 imageView.addEventListener('load', function()
