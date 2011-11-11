@@ -4,7 +4,10 @@ Titanium.UI.setBackgroundColor('#000');
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
 
-
+var contactwin = Titanium.UI.createWindow({  
+	url:'contacts_db.js',
+	titleid:'controls_win_title'
+});
 //
 // create base UI tab and root window
 //
@@ -84,6 +87,11 @@ var contacts = Titanium.UI.createButton({
 	top : 250,
 	left : 60
 })	
+
+contacts.addEventListener('click', function()
+{
+	contactwin.open();
+})
 	
 win1.add(schedulemeals);
 win1.add(ringbell);
