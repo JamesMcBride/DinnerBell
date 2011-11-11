@@ -1,14 +1,3 @@
-var meals = Titanium.UI.createButton({
-	color:'#fff',
-	backgroundImage:'/images/schedule_meal_plate.png',
-	backgroundSelectedImage:'../images/BUTT_grn_on.png',
-	backgroundDisabledImage: '../images/BUTT_drk_off.png',
-	top:200,
-	width:185,
-	height:129,
-	//font:{fontSize:20,fontWeight:'bold',fontFamily:'Helvetica Neue'},
-	//title:'Click Me'
-});
 
 
 var state = 0;

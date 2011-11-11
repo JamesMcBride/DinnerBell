@@ -1,5 +1,4 @@
 //include seperate files
-Ti.include("buttons.js");
 Ti.include("sms.js");
 
 
@@ -98,11 +97,10 @@ win2.add(label2);
 
 //////Menu Buttons
 var schedulemeals = Titanium.UI.createButton({
-	title : 'Schedule Meals',
-	width : 200,
-	height: 40,
-	top : 250,
-	backgroundImage:'/images/bell.png',	
+	top:225,
+	width:185,
+	height:129,
+	backgroundImage:'/images/schedule_meal_plate.png'	
 	
 })
 
@@ -149,10 +147,10 @@ var ringbell = Titanium.UI.createButton({
 });
 
 var contacts = Titanium.UI.createButton({
-	title : 'Contacts',
-	width : 200,
-	height: 40,
-	top : 370,
+	width : 220,
+	height: 60,
+	top : 353,
+	backgroundImage:'/images/contacts_phone.png'
 })	
 
 contacts.addEventListener('click', function()
@@ -168,7 +166,6 @@ schedulemeals.addEventListener('click', function()
 win1.add(schedulemeals);
 win1.add(ringbell);
 win1.add(contacts);
-win1.add(meals);
 
 //open to Contacts screen
 
