@@ -1,6 +1,7 @@
 function initialize_database(){
 	var db = Titanium.Database.open('dinnerbell');
 	db.execute('CREATE TABLE IF NOT EXISTS guests (id int auto_increment, name varchar(255), mobile varchar(255))'); // TODO: Add facebook, twitter, email information to database
+	//db.execute('DELETE FROM guests');
 	db.close();
 }
 
@@ -8,30 +9,27 @@ function insertGuest(name, mobile){
 	var db = Titanium.Database.open('dinnerbell');
 	db.execute('INSERT INTO guests (name, mobile) VALUES(?,?)',name, mobile);
 	// TODO: may need to deal with possible exception if error writing to database
+	db.close();
 }
 
 function getGuests(win){
 	var db = Titanium.Database.open('dinnerbell');
 	var rows = db.execute('SELECT * FROM guests');
 	//Titanium.API.info('ROW COUNT = ' + rows.getRowCount());
+	guests = [];
+	count = 0;
 	while (rows.isValidRow())
 	{
 		//Titanium.API.info('ID: ' + rows.field(0) + ' NAME: ' + rows.fieldByName('name') + ' COLUMN NAME ' + rows.fieldName(0));
-		
-		var guestLabel = Titanium.UI.createLabel({
-			color:'#000000',
-			text:rows.fieldByName('name') + " " +rows.fieldByName('mobile'),
-			font:{fontSize:20,fontFamily:'Helvetica Neue'},
-			textAlign:'center',
-			width:'auto'
-		});
-		
-		win.add(guestLabel);
-		
+		guest[count] = [rows.fieldByName('name'),rows.fieldByName('mobile')];
+		count=count+1;
+
 		rows.next();
 	}
 	rows.close();
 	db.close();
+	return guests;
+	
 }
 /*
 var updateName = 'I was updated';
