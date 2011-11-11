@@ -10,7 +10,7 @@ var tabGroup = Titanium.UI.createTabGroup();
 //
 var win1 = Titanium.UI.createWindow({  
     title:'Menu',
-    backgroundColor:'#fff'
+    backgroundColor:'#EE8833'
 });
 var tab1 = Titanium.UI.createTab({  
     icon:'KS_nav_views.png',
@@ -20,8 +20,8 @@ var tab1 = Titanium.UI.createTab({
 
 var imageView = Titanium.UI.createImageView({
 	image:'http://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png',
-	width:261,
-	height:178,
+	width:200,
+	height:100,
 	top:20
 });
 
@@ -60,7 +60,7 @@ var bvbottom = Titanium.UI.createButton({
 	title : 'Schedule Meals',
 	width : 200,
 	height: 40,
-	top : 150,
+	top : 130,
 	left : 60
 });
 bvbottom.addEventListener('click', function() {
