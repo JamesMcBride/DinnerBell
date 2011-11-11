@@ -43,7 +43,7 @@ var imageView = Titanium.UI.createImageView({
 	image:'/images/bell.png',
 	width:143,
 	height:128,
-	top:40
+	top:40, 
 	});
 
 
@@ -104,16 +104,47 @@ var schedulemeals = Titanium.UI.createButton({
 })
 
 var ringbell = Titanium.UI.createButton({
-	title : 'Ring the Bell',
-	width : 200,
-	height: 40,
-	top : 310,	
+	width:143,
+	height:128,
+	top:40, 
+	backgroundImage:'/images/bell.png',	
 })	
 
  ringbell.addEventListener('click', function()
-{
-	smswin.open();
-})
+ {
+
+	var w = Titanium.UI.createWindow({
+		backgroundColor:'#336699'
+	});
+	// TODO: list contacts that will receive text
+	
+	// create a button to close window
+	var ring = Titanium.UI.createButton({
+		title:'Ring Bell',
+		height:30,
+		width:150,
+		top:20
+	});
+	w.add(ring);
+	ring.addEventListener('click', function()
+	{
+		ringBell();
+	});
+	
+	var b = Titanium.UI.createButton({
+		title:'Close',
+		height:30,
+		width:150
+	});
+	w.add(b);
+	b.addEventListener('click', function()
+	{
+		w.close();
+	});
+
+	w.open();
+});
+
 var contacts = Titanium.UI.createButton({
 	title : 'Contacts',
 	width : 200,
