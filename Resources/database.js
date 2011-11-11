@@ -6,8 +6,9 @@ function initialize_database(){
 }
 
 function insertGuest(name, mobile){
+	//Titanium.API.debug(mobile[0]);
 	var db = Titanium.Database.open('dinnerbell');
-	db.execute('INSERT INTO guests (name, mobile) VALUES(?,?)',name, mobile);
+	db.execute('INSERT INTO guests (name, mobile) VALUES(?,?)',name, mobile[0]);
 	// TODO: may need to deal with possible exception if error writing to database
 	db.close();
 }
