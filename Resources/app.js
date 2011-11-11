@@ -5,6 +5,10 @@ Ti.include("buttons.js");
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Titanium.UI.setBackgroundColor('#000');
 
+Titanium.UI.iPhone.showStatusBar();
+hidden=false;
+Titanium.UI.iPhone.statusBarStyle = Titanium.UI.iPhone.StatusBar.TRANSLUCENT_RED;
+
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
 
@@ -32,6 +36,8 @@ var tab1 = Titanium.UI.createTab({
     window:win1
 });
 
+// Copy to make new image
+
 var imageView = Titanium.UI.createImageView({
 	image:'/images/bell.png',
 	width:143,
@@ -39,12 +45,15 @@ var imageView = Titanium.UI.createImageView({
 	top:40
 	});
 
+
+
 imageView.addEventListener('load', function()
 {
 	Ti.API.info('LOAD CALLED');
 });
 win1.add(imageView);
 
+// end Copy to make new image
 
 var titleImageView = Titanium.UI.createImageView({
 	image:'/images/dinner_bell_title.png',
@@ -167,3 +176,6 @@ function loadingScreen(){
 //Load Screen
 loadingScreen();
 win.open();
+Titanium.UI.iPhone.showStatusBar();
+hidden=false;
+Titanium.UI.iPhone.statusBarStyle = Titanium.UI.iPhone.StatusBar.TRANSLUCENT_BLACK;
