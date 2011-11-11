@@ -1,3 +1,8 @@
+//include seperate files
+Ti.include("buttons.js");
+Ti.include("sms.js");
+
+
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Titanium.UI.setBackgroundColor('#000');
 
@@ -102,11 +107,13 @@ var ringbell = Titanium.UI.createButton({
 	title : 'Ring the Bell',
 	width : 200,
 	height: 40,
-	top : 310,
-	
-	
+	top : 310,	
 })	
 
+ ringbell.addEventListener('click', function()
+{
+	smswin.open();
+})
 var contacts = Titanium.UI.createButton({
 	title : 'Contacts',
 	width : 200,
@@ -121,9 +128,12 @@ contacts.addEventListener('click', function()
 	
 win1.add(schedulemeals);
 win1.add(ringbell);
-win1.add(contacts)
+win1.add(contacts);
+win1.add(meals);
 
 //open to Contacts screen
+
+
 
 // Loading Screen Start
 
