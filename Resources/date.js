@@ -1,5 +1,11 @@
+Ti.include("database.js");
+Ti.include("sms.js");
+
 var win = Titanium.UI.currentWindow;
 win.backgroundImage = '/images/table_cloth.png';
+
+
+var title = 'Dinner';
 
 
 var close = Titanium.UI.createButton({
@@ -63,6 +69,12 @@ var ta1 = Titanium.UI.createTextArea({
 	suppressReturn:true
 	
 });
+
+ta1.addEventListener('change', function()
+{
+	var title = value;
+});
+
 win.add(ta1);
 
 
@@ -117,7 +129,12 @@ var b4 = Titanium.UI.createButton({
 
 b4.addEventListener('click', function()
 {
-// TODO Add text message
+initialize_mealbase(); 
+insertMeal(title, value);
+sendMeal(title, value)
+win.close();
+
+
 });
 
 win.add(b4);
