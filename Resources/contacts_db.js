@@ -1,6 +1,6 @@
 var win = Ti.UI.currentWindow;
 
-var values = {cancel:function() {info.text = 'Cancelled';}};
+var values = {cancel:function() {win.close();}};
 
 if (Ti.Platform.osname === 'android') {
 	// android doesn't have the selectedProperty support, so go ahead and force selectedPerson
