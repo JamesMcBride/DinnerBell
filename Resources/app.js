@@ -27,6 +27,7 @@ var label1 = Titanium.UI.createLabel({
 	bottom: '300'
 });
 
+
 win1.add(label1);
 
 //
