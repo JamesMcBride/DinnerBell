@@ -1,4 +1,4 @@
-var moduleObj = require("com.omorandi");
+var module = require("com.omorandi");
 smsDialog = module.createSMSDialog({
     recipients: ['+14151234567'],
     messageBody: 'Test message from me',
