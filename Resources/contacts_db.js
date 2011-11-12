@@ -19,8 +19,9 @@ var w = Titanium.UI.createWindow({
 	var values = {cancel:function() { info.text = 'Cancelled'; }};
 	values.selectedPerson = function(e) { 
 		Titanium.API.debug(e.person.fullName + ' ' + e.person.phone.mobile); 
-		insertGuest(e.person.fullName, e.person.phone.mobile);		
-		
+		insertGuest(e.person.fullName, e.person.phone.mobile);
+		row = Ti.UI.createTableViewRow({title:e.person.fullName,backgroundColor:'#ffffff'});		
+		tableview.appendRow(row);
 		};
 	var show = Ti.UI.createButton({
 		title:'Add Guest',
@@ -45,8 +46,22 @@ var w = Titanium.UI.createWindow({
 	
 	show2.addEventListener('click', function() {
 		// TODO delte contcts
-		Titanium.API.info("huzzah, a row was swiped");
+		//Titanium.API.info(tableview.data);
 		
+		var tableSection = tableview.data[0];
+		Titanium.API.info(tableSection);
+		Titanium.API.info("tableview.data[0].rowCount=" + tableview.data[0].rowCount);
+		for (var j=tableSection.rowCount-1; j >= 0; j--)
+		{
+		    var row = tableSection.rows[j];
+		    if (row.hasCheck){
+		    	//delete from database
+		    	deleteGuest(row.title);
+		    	tableview.deleteRow(j,row);
+		    }
+		    
+		    
+		}
 		//Titanium.API.debug("Values: " + values.selectedPerson);
 	});
 	w.add(show2);

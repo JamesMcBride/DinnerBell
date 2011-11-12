@@ -26,6 +26,12 @@ function insertGuest(name, mobile){
 	db.close();
 }
 
+function deleteGuest(name){
+	var db = Titanium.Database.open('dinnerbell');
+	db.execute('DELETE FROM guests WHERE name=?', name);
+	db.close();
+}
+
 function getGuests(){
 	var db = Titanium.Database.open('dinnerbell');
 	var rows = db.execute('SELECT * FROM guests');
