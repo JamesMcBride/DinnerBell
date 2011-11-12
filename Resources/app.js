@@ -164,13 +164,14 @@ var ringbell = Titanium.UI.createButton({
 
 			var label5 = Titanium.UI.createLabel({
 			color:'#999',
-			text:'Guests Notified',
 			font:{fontSize:20,fontFamily:'Helvetica Neue'},
 			textAlign:'center',
 			color: '#09B017',
-			width:'auto',
-			top: 330,
-			topMost: true
+			width:'220',
+			height: '94',
+			top: 320,
+			topMost: true,
+			backgroundImage:'/images/guests_notified.png'
 		});
 		
 		w.add(label5);

@@ -5,7 +5,7 @@ var win = Titanium.UI.currentWindow;
 win.backgroundImage = '/images/table_cloth.png';
 
 
-var title = 'Dinner';
+var mess = 'Dinner';
 
 
 var close = Titanium.UI.createButton({
@@ -56,6 +56,7 @@ var ta1 = Titanium.UI.createTextArea({
 	editable: true,
 	height:70,
 	width:200,
+	value: 'Dinner',
 	top:175,
 	font:{fontSize:20,fontFamily:'Marker Felt', fontWeight:'bold'},
 	color:'#888',
@@ -72,7 +73,7 @@ var ta1 = Titanium.UI.createTextArea({
 
 ta1.addEventListener('change', function()
 {
-	var title = value;
+	var mess = value;
 });
 
 win.add(ta1);
@@ -130,8 +131,8 @@ var b4 = Titanium.UI.createButton({
 b4.addEventListener('click', function()
 {
 initialize_mealbase(); 
-insertMeal(title, value);
-sendMeal(title, value)
+insertMeal(mess, value);
+sendMeal(mess, value)
 win.close();
 
 
