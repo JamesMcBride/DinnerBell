@@ -281,7 +281,7 @@ function loadingScreen(){
 
 
 	
-	},100);
+	},5000);
 }
 
 // end loading screen
