@@ -5,7 +5,7 @@ var win = Titanium.UI.currentWindow;
 win.backgroundImage = '/images/table_cloth.png';
 
 
-var mess = 'Dinner';
+var mess = '';
 
 
 var close = Titanium.UI.createButton({
@@ -34,9 +34,7 @@ maxDate.setMonth(11);
 maxDate.setDate(31);
 
 var value = new Date();
-value.setFullYear(2011);
-value.setMonth(0);
-value.setDate(1);
+
 
 var imageView = Titanium.UI.createImageView({
 	image:'/images/schedule_meal_title.png',
@@ -73,7 +71,7 @@ var ta1 = Titanium.UI.createTextArea({
 
 ta1.addEventListener('change', function()
 {
-	var mess = value;
+	mess = ta1.value;
 });
 
 win.add(ta1);
@@ -131,8 +129,8 @@ var b4 = Titanium.UI.createButton({
 b4.addEventListener('click', function()
 {
 initialize_mealbase(); 
-insertMeal(mess, value);
-sendMeal(mess, value)
+insertMeal(ta1.value, value);
+sendMeal(ta1.value, value)
 win.close();
 
 
@@ -162,6 +160,7 @@ b3.addEventListener('click', function()
 	picker.addEventListener('change',function(e){
 		label.text = e.value.toLocaleString();
 		b3.title = e.value.toLocaleString();
+		value = e.value.toLocaleString();
 	});
 
 	
