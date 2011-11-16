@@ -1,5 +1,7 @@
-Ti.include("database.js");
 Ti.include("sms.js");
+Ti.include("contacts_db.js");
+Ti.include("database.js");
+
 
 var win = Titanium.UI.currentWindow;
 win.backgroundImage = '/images/table_cloth.png';
@@ -130,9 +132,12 @@ b4.addEventListener('click', function()
 {
 initialize_mealbase(); 
 insertMeal(ta1.value, value);
-sendMeal(ta1.value, value)
+if (sendMeal(ta1.value, value) != 1){
+	guestList();
+}
+else{
 win.close();
-
+}
 
 });
 

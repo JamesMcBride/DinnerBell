@@ -3,9 +3,20 @@ var win3 = Ti.UI.createWindow;
 var guestlist = 'To: ';
 
 function ringBell(){
-// TODO: grab all active contacts, and send them a text message
+
 
 guests = getGuests();
+
+if (guests == ''){
+	var a = Titanium.UI.createAlertDialog({
+	title: 'Sorry',
+	message: 'You need to add some contacts first.'
+	});
+	
+	a.show();
+	
+}
+else{
 
 for (var i=0; i < guests.length; i=i+1){
 	
@@ -36,12 +47,27 @@ smsDialog = module.createSMSDialog({
 	});
 	
 	a.show();
-
+	return 1
 }
+}
+
+
+
 function sendMeal(mess, date){
-// TODO: grab all active contacts, and send them a text message
+	
 
 guests = getGuests();
+
+if (guests == ''){
+	var a = Titanium.UI.createAlertDialog({
+	title: 'Sorry',
+	message: 'You need to add some contacts first.'
+	});
+	
+	a.show();
+	
+}
+else{
 
 for (var i=0; i < guests.length; i=i+1){
 	
@@ -63,4 +89,6 @@ smsDialog = module.createSMSDialog({
 	});
 	
 	b.show();
+	return 1
+}
 }

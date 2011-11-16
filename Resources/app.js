@@ -110,6 +110,8 @@ var ringbell = Titanium.UI.createButton({
 
  ringbell.addEventListener('click', function()
  {
+ 	
+ 	if (ringBell() == 1){
 
 	var w = Titanium.UI.createWindow({
 		backgroundColor:'#336699',
@@ -204,17 +206,14 @@ w.add(close);
 	
 	var sound = Titanium.Media.createSound();
 	sound.url='/sounds/bell.mp3'; // For testing #1913
-
-
-	ringBell();
 	
 	sound.play();
-	
-	
-
-
 
 	w.open();
+	}
+	else{
+		guestList();
+			}
 });
 
 var contacts = Titanium.UI.createButton({
