@@ -17,7 +17,7 @@ if (guests == ''){
 	
 }
 else{
-
+try{
 for (var i=0; i < guests.length; i=i+1){
 	
 
@@ -39,8 +39,10 @@ smsDialog = module.createSMSDialog({
 	});
     
 }
+}
 
 
+catch(err){
 	var a = Titanium.UI.createAlertDialog({
 	title: 'Message Status',
 	message: guestlist + '\nMessage: Dinner Is Ready!\nStatus: Unsent (using simulator)'
@@ -48,8 +50,11 @@ smsDialog = module.createSMSDialog({
 	
 	a.show();
 	return 1
+
 }
 }
+}
+
 
 
 
@@ -68,9 +73,9 @@ if (guests == ''){
 	
 }
 else{
+try{	
 
 for (var i=0; i < guests.length; i=i+1){
-	
 
 var module = require("com.omorandi");
 smsDialog = module.createSMSDialog({
@@ -83,12 +88,16 @@ smsDialog = module.createSMSDialog({
     guestlist = guestlist  + guests[i][0] + ' '
     
 }
+}
+catch(err)
+{
 	var b = Titanium.UI.createAlertDialog({
 	title: 'Message Status',
-	message: guestlist + '\nMessage: ' + mess + ' on ' + date + '\nStatus: Unsent (using simulator)'
+	message: guestlist + '\nMessage: ' + mess + ' on ' + date + '\nError:' + err
 	});
 	
 	b.show();
 	return 1
+}
 }
 }

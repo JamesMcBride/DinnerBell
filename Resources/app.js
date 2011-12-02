@@ -41,8 +41,8 @@ var tab1 = Titanium.UI.createTab({
 
 var imageView = Titanium.UI.createImageView({
 	image:'/images/bell.png',
-	width:143,
-	height:128,
+	width:145,
+	height:130,
 	top:40, 
 	});
 
@@ -260,7 +260,7 @@ function loadingScreen(){
 	actInd.width = 210;
 	actInd.show();
 	var imageView = Titanium.UI.createImageView({
-		image:'/iphone/default.png',
+		image:'/images/default.png',
 		width:'100%',
 		height:'100%'
 	});
@@ -280,7 +280,7 @@ function loadingScreen(){
 
 
 	
-	},5000);
+	},10000);
 }
 
 // end loading screen
