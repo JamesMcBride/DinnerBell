@@ -17,41 +17,41 @@ if (guests == ''){
 	
 }
 else{
-try{
-for (var i=0; i < guests.length; i=i+1){
-	
+	try{
+		guestlist = []
+		for (var i=0; i < guests.length; i=i+1){
+		    guestlist.push(guests[i][1]);
+		
 
-var module = require("com.omorandi");
-smsDialog = module.createSMSDialog({
-    recipients: [guests[i][1]],
-    messageBody: ', Dinner Is Ready',
-    });
-    
-    guestlist = guestlist  + guests[i][0] + ' '
-
+		}
+		
+				var module = require("com.omorandi");
+		smsDialog = module.createSMSDialog({
+		    recipients: guestlist,
+		    messageBody: 'Dinner Is Ready',
+		    });
+		    
+		   smsDialog.open({animated: false});
+		    
+//			smsDialog.addEventListener('complete', function(e){
+//				Ti.API.info("Result: " + e.error);
+//				var a = Ti.UI.createAlertDialog({title: 'complete', message: 'Result: ' + e.error});
+//				a.show();
+//			});
+		    
+	}
 	
-    //  smsDialog.open({animated: true});
-    
-	smsDialog.addEventListener('complete', function(e){
-		Ti.API.info("Result: " + e.error);
-		var a = Ti.UI.createAlertDialog({title: 'complete', message: 'Result: ' + e.error});
+	
+	catch(err){
+		var a = Titanium.UI.createAlertDialog({
+		title: 'Message Status',
+		message: guestlist + '\nMessage: Dinner Is Ready!\nStatus: Unsent (using simulator)'
+		});
+		
 		a.show();
-	});
-    
-}
-}
-
-
-catch(err){
-	var a = Titanium.UI.createAlertDialog({
-	title: 'Message Status',
-	message: guestlist + '\nMessage: Dinner Is Ready!\nStatus: Unsent (using simulator)'
-	});
+		return 1
 	
-	a.show();
-	return 1
-
-}
+	}
 }
 }
 
@@ -75,19 +75,22 @@ if (guests == ''){
 else{
 try{	
 
-for (var i=0; i < guests.length; i=i+1){
+		guestlist = []
+		for (var i=0; i < guests.length; i=i+1){
+		    guestlist.push(guests[i][1]);
+		
 
+		}
+		
 var module = require("com.omorandi");
 smsDialog = module.createSMSDialog({
-    recipients: [ guests[i][0]],
-    messageBody: mess + 'On' + date,
+    recipients: guestlist,
+    messageBody: mess + ' On ' + date,
     });
 
-    // smsDialog.open({animated: true});
-    
-    guestlist = guestlist  + guests[i][0] + ' '
-    
-}
+    smsDialog.open({animated: true});
+
+
 }
 catch(err)
 {

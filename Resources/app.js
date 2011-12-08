@@ -260,7 +260,7 @@ function loadingScreen(){
 	actInd.width = 210;
 	actInd.show();
 	var imageView = Titanium.UI.createImageView({
-		image:'/images/default.png',
+		image:'/images/Default.png',
 		width:'100%',
 		height:'100%'
 	});
