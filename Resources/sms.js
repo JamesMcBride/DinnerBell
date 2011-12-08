@@ -31,7 +31,7 @@ else{
 		    messageBody: 'Dinner Is Ready',
 		    });
 		    
-		   smsDialog.open({animated: false});
+		   smsDialog.open({animated: true});
 		    
 //			smsDialog.addEventListener('complete', function(e){
 //				Ti.API.info("Result: " + e.error);
