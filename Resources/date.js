@@ -132,18 +132,12 @@ b4.addEventListener('click', function()
 {
 initialize_mealbase(); 
 insertMeal(ta1.value, value);
-if (sendMeal(ta1.value, value) != 1){
-	guestList();
-}
-else{
-win.close();
-}
-
+sendMeal(ta1.value, value) 
 });
 
 win.add(b4);
 
-var label4 = 'TOADY';
+var label4 = 'TODAY';
 
 b3.addEventListener('click', function()
 {
