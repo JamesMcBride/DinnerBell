@@ -185,6 +185,7 @@ function loadingScreen(){
 
 //Load Screen
 loadingScreen();
+initialize_database();
 win.open();
 Titanium.UI.iPhone.showStatusBar();
 hidden=false;

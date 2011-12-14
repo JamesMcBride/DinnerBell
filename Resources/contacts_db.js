@@ -83,7 +83,7 @@ var w = Titanium.UI.createWindow({
 	w.open();
 
 
-initialize_database();
+
 
 guests = getGuests();
 

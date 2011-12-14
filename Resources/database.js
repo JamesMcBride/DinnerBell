@@ -3,11 +3,32 @@ function initialize_database(){
 	db.execute('CREATE TABLE IF NOT EXISTS guests (id int auto_increment, name varchar(255), mobile varchar(255))'); // TODO: Add facebook, twitter, email information to database
 	//db.execute('DELETE FROM guests');
 	db.close();
+	var request = Ti.Network.createHTTPClient(); 
+	request.onload = function()  
+	{  
+    if (this.responseText == "Complete")  
+    {  
+        Titanium.API.debug('Database Submtion Success');  
+    }  
+    else  
+    {  
+        Titanium.API.debug(this.responseText);
+    }  
+	};  
+	
+	request.open("POST","http://caseyisom.com/database.php");
+	var params = {  
+                user_name: 'casey'  
+            };
+	request.send(params);
+	Titanium.API.debug('i made it passed the finish line');
+   
 }
 
 function initialize_mealbase(){
 	var db = Titanium.Database.open('dinnerbell');
-	db.execute('CREATE TABLE IF NOT EXISTS meal (id int auto_increment, title varchar(255), date varchar(255))'); // TODO: Add facebook, twitter, email information to database
+	db.execute('CREATE TABLE IF NOT EXISTS meal (id int auto_increment, title varchar(255), date varchar(255))');
+	 // TODO: Add facebook, twitter, email information to database
 	db.close();
 }
 
@@ -19,7 +40,7 @@ function insertMeal(title, date){
 
 
 function insertGuest(name, mobile){
-	//Titanium.API.debug(mobile[0]);
+	//Titanium.API.debug(mobile[/0]);
 	var db = Titanium.Database.open('dinnerbell');
 	db.execute('INSERT INTO guests (name, mobile) VALUES(?,?)',name, mobile[0]);
 	// TODO: may need to deal with possible exception if error writing to database
