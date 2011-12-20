@@ -45,19 +45,21 @@ var w = Titanium.UI.createWindow({
 	});
 	
 	show2.addEventListener('click', function() {
-		// TODO delte contcts
+		// TODO delete contcts
 		//Titanium.API.info(tableview.data);
 		
 		var tableSection = tableview.data[0];
-		Titanium.API.info(tableSection);
-		Titanium.API.info("tableview.data[0].rowCount=" + tableview.data[0].rowCount);
 		for (var j=tableSection.rowCount-1; j >= 0; j--)
 		{
 		    var row = tableSection.rows[j];
 		    if (row.hasCheck){
 		    	//delete from database
-		    	deleteGuest(row.title);
+		    	var db = Titanium.Database.open('dinnerbell');
+		    	var r = db.execute("SELECT * FROM guests WHERE name=?", row.title);
+		    	Titanium.API.debug(r.fieldByName('id') + 'here is the id');
+		    	deleteGuest(row.title,r.fieldByName('id'));
 		    	tableview.deleteRow(j,row);
+		    					db.close();
 		    }
 		    
 		    
